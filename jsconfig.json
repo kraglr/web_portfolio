@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Enables absolute imports from root
+    "paths": {
+      "@/*": ["src/*"] // Optional: use "@/components" style paths
+    },
+    "jsx": "react-jsx", // Required for React 17+ JSX transform
+    "module": "ESNext",
+    "moduleResolution": "bundler", // Use "node" instead of "bundler"
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": false // Set true for stricter type checking
+  },
+  "include": ["src"]
+}
