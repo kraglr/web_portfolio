@@ -233,25 +233,86 @@ const LeftBar = () => {
     </div>
   );
 };
+
+const ProfileCard = () => {
+  const [showMore, setShowMore] = useState(true);
+
+  const fullText = `I am a result-driven Full Stack Developer with 3+ years of experience
+  building responsive, high-performance web systems. Skilled in Laravel,
+  React.js, and full-stack development with a solid foundation in MySQL,
+  RESTful APIs, and modern UI frameworks. Experienced in both healthcare
+  and ERP applications, focusing on scalable architectures, data security,
+  and seamless user experiences.`;
+
+  const previewText = fullText.split(". ").slice(0, 2).join(". ") + ".";
+
+  return (
+    <div className="bg-[var(--bg)] rounded-md lg:grid hidden transition-all duration-300 ease-in-out  ">
+      <div
+        className="relative p-2 transition-all duration-300 ease-in-out bg-center bg-no-repeat bg-cover rounded-md lg:p-0"
+        style={{
+          backgroundImage: `url(${profilePic})`,
+          minHeight: "35rem", // increase height to account for bottom filler
+          backgroundColor: "rgba(0,0,0,0.3)",
+          backgroundBlendMode: "multiply",
+        }}
+      >
+        <div className="absolute backdrop-blur-[2px] rounded-md px-4 py-2 text-center h-full max-h-20 top-1/2 z-2">
+          <h3 className="text-2xl font-semibold text-white">Kier L. Aguilar</h3>
+          <h6 className="text-sm text-gray-100">Full Stack Developer</h6>
+          <p className="mt-3 text-xs text-justify text-gray-300">
+            {showMore ? fullText : previewText}
+            {/* <button
+              onClick={() => setShowMore(!showMore)}
+              className="ml-1 text-blue-700 underline transition hover:opacity-80"
+              aria-expanded={showMore}
+            >
+              {showMore ? "Show Less" : "Show More"}
+            </button> */}
+          </p>
+          <div className="grid grid-cols-2 mt-2">
+            <div className="flex flex-col col-span-1 border-r-1 border-[var(--border)]">
+              <h6 className="font-bold text-green-500">3+</h6>
+              <span className="text-[10px] text-gray-300">Experience</span>
+            </div>
+            {/* <div className="flex flex-col col-span-1 border-r-1 border-[var(--border)]">
+              <h6 className="font-bold text-yellow-500">5+</h6>
+              <span className="text-[10px] text-[var(--textColorSoft)]">
+                Projects
+              </span>
+            </div> */}
+            <div className="flex flex-col col-span-1 ">
+              <h6 className="font-bold text-blue-500">19+</h6>
+              <span className="text-[10px] text-gray-300">Tech Stacks</span>
+            </div>
+          </div>
+        </div>
+        {/* <div className="w-full h-20 bg-[rgba(0,0,0,0.3)] backdrop-blur-[2px] z-1" /> */}
+      </div>
+    </div>
+  );
+};
 const Contents = () => {
   return (
-    <div className="w-full px-3 mx-auto bg-[var(--bgSoft)] rounded-md grid grid-cols-[1fr_3fr_1fr] items-start gap-2">
+    <div className="w-full px-3 mx-auto bg-[var(--bgSoft)] rounded-md grid xl:grid-cols-[1fr_3fr_1fr] lg:grid-cols-[1fr_3fr] grid-cols-1 items-start gap-x-2 gap-y-3 transition-all duration-300 ease-in-out">
       {/* Left Sticky Aside */}
-      <aside className="sticky rounded top-18 h-fit ">
-        <div className="bg-[var(--bg)]  rounded-md">
+      <aside className="relative col-span-1 space-y-3 rounded shadow lg:sticky lg:top-18 h-fit gap-y-3 lg:space-y-3">
+        <ProfileCard />
+
+        <div className="bg-[var(--bg)]  rounded-md lg:hidden  p-4 flex md:flex-row flex-col transition-all duration-500 ease-in-out">
           <img
             src={profilePic}
             alt="Profile"
-            className="object-cover object-[center_40%] w-full mx-auto mb-2 h-60 rounded-t-md"
+            className="object-cover object-[center_40%] w-50 border-2 border-[var(--border)]  aspect-square h-50 rounded-full mx-auto my-auto"
           />
           <div className="px-4 py-2 text-center">
-            <h3 className="text-xl font-semibold text-[var(--textColor)]">
+            <h3 className="lg:text-xl text-3xl font-semibold text-[var(--textColor)]">
               Kier L. Aguilar
             </h3>
-            <h6 className="text-xs text-[var(--textColorSoft)]">
+            <h6 className="lg:text-sm text-lg text-[var(--textColor)]">
               Full Stack Developer
             </h6>
-            <p className="text-justify text-xs text-[var(--textColorSoft)] mt-3">
+            <p className="mt-3 lg:text-xs text-md text-justify text-[var(--textColorSoft)]">
               I am a Result-driven Full Stack Developer with 3+ years of
               experience building responsive, high-performance web systems.
               Skilled in Laravel, React.js, and full-stack development with a
@@ -260,28 +321,48 @@ const Contents = () => {
               scalable architectures, data security, and seamless user
               experiences.
             </p>
+            <div className="grid grid-cols-2 mt-2">
+              <div className="flex flex-col col-span-1 border-r-1 border-[var(--border)]">
+                <h6 className="font-bold text-green-500">3+</h6>
+                <span className="text-[10px] text-[var(--textColor)]">
+                  Experience
+                </span>
+              </div>
+              {/* <div className="flex flex-col col-span-1 border-r-1 border-[var(--border)]">
+              <h6 className="font-bold text-yellow-500">5+</h6>
+              <span className="text-[10px] text-[var(--textColorSoft)]">
+                Projects
+              </span>
+            </div> */}
+              <div className="flex flex-col col-span-1 ">
+                <h6 className="font-bold text-blue-500">19+</h6>
+                <span className="text-[10px] text-[var(--textColor)]">
+                  Tech Stacks
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="px-4 py-2 bg-[var(--bg)] mt-3 rounded-md">
+
+        <div className="px-4 py-2 bg-[var(--bg)]  rounded-md">
           <div className="flex mb-3 space-x-1 font-bold">
             <MailOutlineIcon />
             <h1>Get in Touch</h1>
           </div>
           <div className="flex items-center justify-around space-x-2 ">
-            <LinkedInIcon fontSize="large" />
-            <FacebookIcon fontSize="large" />
-            <InstagramIcon fontSize="large" />
-            <GitHubIcon fontSize="large" />
+            <LinkedInIcon fontSize="medium" className="text-[#0077B5]" />
+            <GitHubIcon fontSize="medium" className="text-[var(--textColor)]" />
+            <FacebookIcon fontSize="medium" className="text-[#4267B2]" />
+            <InstagramIcon fontSize="medium" className="text-[#F77737]" />
           </div>
-          <p className="text-start text-sm text-[var(--textColorSoft)] mt-2  italic">
-            Have an idea or project?
-            <br /> Let's bring it to life together.
+          <p className="text-start text-xs text-[var(--textColorSoft)] mt-2  italic">
+            Have an idea or project? Let's bring it to life together.
           </p>
         </div>
       </aside>
 
       {/* Main Content */}
-      <div className="relative flex flex-col space-y-3 ">
+      <div className="relative flex flex-col col-span-1 space-y-3 overflow-x-hidden">
         <section>
           <Education />
         </section>
@@ -294,7 +375,7 @@ const Contents = () => {
       </div>
 
       {/* Right Aside (empty or future use) */}
-      <aside className="bg-[var(--bg)] sticky top-18 h-fit p-2 rounded shadow col-span-1 overflow-x-hidden">
+      <aside className="bg-[var(--bg)] lg:sticky relative lg:top-18 h-fit p-2 rounded shadow col-span-1 overflow-x-hidden xl:col-start-3 lg:col-start-2 ">
         {" "}
         {/* Add overflow-x-hidden here */}
         <LeftBar />

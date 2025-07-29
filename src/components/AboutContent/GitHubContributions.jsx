@@ -12,7 +12,7 @@ const GitHubContributions = ({ username }) => {
   const years = ["2025", "2024", "2023", "2022"];
 
   const contributionLevels = {
-    0: "#2a2a2a",
+    0: "var(--bgSoft)",
     1: "#0e4429",
     2: "#006d32",
     3: "#26a641",
@@ -101,15 +101,39 @@ const GitHubContributions = ({ username }) => {
         opacity-100 w-full grid-cols-[1fr_3fr_1fr]" : "fixed bottom-0 left-1/2
         -translate-x-1/2 translate-y-2 opacity-95 w-[90%] grid-cols-[3fr_1fr]"
         }`} */}
-        <GitHubIcon fontSize="large" />
-        <div className="flex flex-col justify-center">
+        <div className="flex items-center w-16 h-16 rounded-full bg-[var(--bgSoft)] justify-center text-xl">
+          <GitHubIcon fontSize="large" className="text-[var(--textColor)]" />
+        </div>
+
+        <div className="flex flex-row justify-between flex-grow-1">
           <h1 className="text-2xl font-bold">Github Contributions</h1>
+          <div className="flex">
+            <select
+              name="year"
+              className="px-4 py-2 border-1 border-[var(--border)] rounded cursor-pointer"
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+            >
+              {years.map((year) => (
+                <option
+                  key={year}
+                  className={`px-3 py-1 w-full rounded-md text-sm ${
+                    selectedYear === year
+                      ? "bg-blue-600 text-white"
+                      : "bg-[var(--bgSoft)] hover:bg-gray-700"
+                  }`}
+                >
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
       {/* Year Selector */}
 
-      <div className="flex space-x-3">
+      <div className="flex items-center justify-center space-x-3">
         <div className="flex bg-[var(--bg)] border-1 border-[var(--border)] p-2 rounded-md">
           {/* Y-axis labels (Mon, Wed, Fri) */}
           <div className="flex flex-col mt-[15px] mr-2 text-[10px] text-[var(--textColor)] h-fit">
@@ -117,7 +141,7 @@ const GitHubContributions = ({ username }) => {
               (day, idx) => (
                 <span
                   key={day}
-                  className={`h-[11px] mb-[3px] ${
+                  className={`xl:h-[9px] lg:h-[10px] h-[9px] mb-[3px] ${
                     day === "Mon" || day === "Wed" || day === "Fri"
                       ? "visible"
                       : "invisible"
@@ -140,7 +164,7 @@ const GitHubContributions = ({ username }) => {
                 return (
                   <div
                     key={`label-${weekIdx}`}
-                    className="w-[13px] text-[10px] text-[var(--textColor)] text-center"
+                    className="xl:w-[11px] lg:w-[12px] w-[11px] text-[10px] text-[var(--textColor)] text-center"
                   >
                     {monthLabel?.label || ""}
                   </div>
@@ -160,29 +184,13 @@ const GitHubContributions = ({ username }) => {
                       style={{
                         backgroundColor: getColorLevel(day.contributionCount),
                       }}
-                      className="w-[11px] h-[11px] rounded-[2px]"
+                      className="xl:w-[9px] xl:h-[9px] lg:w-[10px] lg:h-[10px] w-[9px] h-[9px] rounded-[2px]"
                     ></div>
                   ))}
                 </div>
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-2 flex-grow-1">
-          {years.map((year) => (
-            <button
-              key={year}
-              onClick={() => setSelectedYear(year)}
-              className={`px-3 py-1 w-full rounded-md text-sm ${
-                selectedYear === year
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-800 hover:bg-gray-700"
-              }`}
-            >
-              {year}
-            </button>
-          ))}
         </div>
       </div>
       {/* Legend */}

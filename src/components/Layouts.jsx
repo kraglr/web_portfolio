@@ -238,7 +238,7 @@ const Layouts = () => {
 
       <main
         ref={mainScrollRef}
-        className="flex flex-col flex-1 w-screen min-h-screen pb-24 space-y-1 overflow-y-auto"
+        className="flex flex-col flex-1 w-screen min-h-screen space-y-1 overflow-y-auto"
       >
         <section ref={profileRef} data-id="Home" className="mb-3">
           <Profile />

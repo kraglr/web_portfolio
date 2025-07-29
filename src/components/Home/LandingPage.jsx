@@ -20,7 +20,7 @@ import {
 
 const TechStackIcons = () => {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xl">
+    <div className="flex flex-wrap items-center justify-center gap-4 px-4 mt-4 text-xl lg:px-2">
       <SiLaravel
         title="Laravel"
         className="text-2xl cursor-pointer hover:text-red-500"
@@ -79,7 +79,7 @@ const TechStackIcons = () => {
 
 const LandingPage = () => {
   return (
-    <div className="relative flex flex-col justify-center items-center text-[var(--textColor)] bg-[var(--bg)] h-[70vh] overflow-hidden space-y-8">
+    <div className="relative flex flex-col justify-center items-center text-[var(--textColor)] bg-[var(--bg)] lg:h-[70vh] h-screen overflow-hidden space-y-8">
       <img
         src={bg}
         alt="Background"

@@ -10,13 +10,15 @@ const Education = () => {
         opacity-100 w-full grid-cols-[1fr_3fr_1fr]" : "fixed bottom-0 left-1/2
         -translate-x-1/2 translate-y-2 opacity-95 w-[90%] grid-cols-[3fr_1fr]"
         }`} */}
-        <SchoolIcon fontSize="large" />
+        <div className="flex items-center w-16 h-16 rounded-full bg-[var(--bgSoft)] justify-center text-xl">
+          <SchoolIcon fontSize="large" className="text-[var(--textColor)]" />
+        </div>
         <div className="flex flex-col justify-center">
           <h1 className="text-2xl font-bold">Educations</h1>
         </div>
       </div>
 
-      <div className="grid grid-cols-[1fr_7fr] gap-x-3">
+      <div className="grid grid-cols-[1fr_7fr] gap-x-3 border-t-1 border-[var(--border)] pt-2">
         <img src={slsu} alt="" />
         <div className="col-span-1">
           <h1 className="text-[var(--textColor)] font-bold text-xl">

@@ -57,7 +57,10 @@ const Experience = () => {
         opacity-100 w-full grid-cols-[1fr_3fr_1fr]" : "fixed bottom-0 left-1/2
         -translate-x-1/2 translate-y-2 opacity-95 w-[90%] grid-cols-[3fr_1fr]"
         }`} */}
-        <ImProfile fontSize="large" />
+        <div className="flex items-center w-16 h-16 rounded-full bg-[var(--bgSoft)] justify-center text-xl">
+          <ImProfile fontSize="large" className="text-[var(--textColor)]" />
+        </div>
+
         <div className="flex flex-col justify-center">
           <h1 className="text-2xl font-bold">Experience</h1>
         </div>
