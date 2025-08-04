@@ -87,7 +87,7 @@ const Experience = () => {
                   {exp.duties.map((item, itemidx) => {
                     return (
                       <>
-                        <li className="ml-5" key={itemidx}>
+                        <li className="ml-5" key={`${itemidx}-${item}`}>
                           {item}
                         </li>
                       </>
