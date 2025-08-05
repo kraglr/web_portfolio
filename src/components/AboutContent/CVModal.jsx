@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import cv from "../../assets/files/cv.pdf";
+// import cv from "../../assets/files/cv.pdf";
 import { MdOutlineClear } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -70,7 +70,7 @@ const CVModal = ({ openCVModal, setOpenCVModal }) => {
             <div className="flex-1 overflow-auto">
               {isMobileOrTablet ? (
                 <Document
-                  file={cv}
+                  file={"files/CV.pdf"}
                   onLoadSuccess={onDocumentLoadSuccess}
                   loading={
                     <p className="text-center text-gray-500">Loading CV...</p>
@@ -86,7 +86,7 @@ const CVModal = ({ openCVModal, setOpenCVModal }) => {
                   {numPages ? renderPages() : null}
                 </Document>
               ) : (
-                <iframe src={cv} className="w-full h-full"></iframe>
+                <iframe src={"files/CV.pdf"} className="w-full h-full"></iframe>
               )}
             </div>
           </motion.div>
