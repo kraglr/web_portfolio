@@ -350,7 +350,7 @@ const Contents = () => {
           <div className="bg-[var(--bg)]  rounded-md lg:hidden  p-4 flex md:flex-row flex-col transition-all duration-500 ease-in-out">
             <picture className="object-cover object-[center_40%] w-48  border-2 border-[var(--border)]  aspect-square h-48 rounded-full mx-auto my-auto">
               {/* The browser will try to load this WebP image first. */}
-              <source src={profileWebp} type="image/webp" />
+              <source srcSet={profileWebp} type="image/webp" />
               {/* <source srcSet={profileWebp} type="image/webp" className="" /> */}
               <img
                 src={profilePic}
