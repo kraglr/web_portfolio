@@ -89,7 +89,7 @@ const ContactMe = () => {
         out!
       </p>
       <div className="grid w-full grid-cols-1 px-3 lg:grid-cols-2 ">
-        <div className="flex flex-col items-start col-span-1 justify-">
+        <div className="flex flex-col items-center col-span-1 lg:items-start ">
           <div className="w-[75%]">
             <div className="grid grid-cols-4 my-3">
               <div className="justify-center col-span-1 my-auto align-middle">
@@ -134,8 +134,8 @@ const ContactMe = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-start justify-start col-span-1 text-left ">
-          <form onSubmit={handleSubmit} className="w-[75%]">
+        <div className="flex items-center justify-center col-span-1 text-left lg:items-start lg:justify-start ">
+          <form onSubmit={handleSubmit} className="w-[75%] mx-auto">
             <div className="flex flex-col mb-3 space-y-2">
               <label htmlFor="name">
                 Name <span className="text-red-600">*</span>
