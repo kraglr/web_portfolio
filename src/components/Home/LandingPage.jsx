@@ -1,6 +1,7 @@
 // src/components/Home/LandingPage.jsx
 import React from "react";
-import bg from "../../assets/img/generatedimg.png";
+import bg from "../../assets/img/generatedimg.webp";
+import bgpng from "../../assets/img/generatedimg.png";
 import Typewriter from "typewriter-effect";
 import {
   SiLaravel,
@@ -80,11 +81,15 @@ const TechStackIcons = () => {
 const LandingPage = () => {
   return (
     <div className="relative flex flex-col justify-center items-center text-[var(--textColor)] bg-[var(--bg)] lg:h-[70vh] h-screen overflow-hidden space-y-8">
-      <img
-        src={bg}
-        alt="Background"
-        className="absolute top-0 left-0 object-cover w-full h-full opacity-30 blur-sm"
-      />
+      <picture>
+        <source srcSet={bg} type="image/webp" />
+        <img
+          src={bgpng}
+          alt="Background"
+          className="absolute top-0 left-0 object-cover w-full h-full opacity-30 blur-sm"
+        />
+      </picture>
+
       <h1 className="relative z-10 max-w-5xl px-4 text-3xl leading-snug text-center md:text-5xl">
         <Typewriter
           options={{

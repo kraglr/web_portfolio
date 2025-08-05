@@ -276,7 +276,7 @@ const ProfileCard = ({ setOpenMessageModal, setOpenCVModal }) => {
       <div
         className="relative p-2 transition-all duration-300 ease-in-out bg-center bg-no-repeat bg-cover rounded-md flex-grow-1 lg:p-0"
         style={{
-          backgroundImage: `url(${profilePic})`,
+          backgroundImage: `url(${profileWebp})`,
           minHeight: "38rem", // increase height to account for bottom filler
           backgroundColor: "rgba(0,0,0,0.3)",
           backgroundBlendMode: "multiply",
