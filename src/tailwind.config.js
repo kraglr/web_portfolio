@@ -12,21 +12,13 @@ export default {
     theme: {
         extend: {
             animation: {
-                'bounce-in': 'bounceIn 0.6s ease-out',
+                'bounce-once': 'bounceOnce 0.5s ease-out',
             },
             keyframes: {
-                bounceIn: {
-                    '0%': {
-                        transform: 'scale(0.9)',
-                        opacity: '0',
-                    },
-                    '60%': {
-                        transform: 'scale(1.05)',
-                        opacity: '1',
-                    },
-                    '100%': {
-                        transform: 'scale(1)',
-                    },
+                bounceOnce: {
+                    '0%': { transform: 'scale(0.9)', opacity: '0' },
+                    '60%': { transform: 'scale(1.05)', opacity: '1' },
+                    '100%': { transform: 'scale(1)', opacity: '1' },
                 },
             },
         },

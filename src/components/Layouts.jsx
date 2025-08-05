@@ -9,7 +9,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import CallIcon from "@mui/icons-material/Call";
 import ArticleIcon from "@mui/icons-material/Article";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { IoMdSunny } from "react-icons/io";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CareerStats from "./Home/CareerStats";
 import About from "./Contents/About";
@@ -58,9 +58,13 @@ const Layouts = () => {
     for (const [key, value] of Object.entries(themeVars)) {
       root.style.setProperty(key, value);
     }
+    setIsDarkMode(localStorage.getItem("isDarkMode") === "true");
   }, [isDarkMode]);
 
-  const toggleTheme = () => setIsDarkMode((prev) => !prev);
+  const toggleTheme = () => {
+    localStorage.setItem("isDarkMode", !isDarkMode);
+    setIsDarkMode(!isDarkMode);
+  };
 
   useEffect(() => {
     if (!profileRef.current || !aboutRef.current) return;
@@ -212,20 +216,19 @@ const Layouts = () => {
               />
               <div className="flex items-center justify-between w-full h-full px-1 transition-colors duration-300 rounded-full peer-checked:bg-[var(--bgSoft)]">
                 <div
-                  className={`absolute top-[2px] left-[2px] h-6 w-6 rounded-full bg-[var(--bg)] shadow-md transform transition-transform duration-300 flex items-center justify-center ${
-                    isDarkMode ? "translate-x-[28px]" : "translate-x-0"
+                  className={`absolute top-[2px] left-[2px] h-6 w-6 rounded-full  shadow-md transform transition-transform duration-300 flex items-center justify-center ${
+                    isDarkMode
+                      ? "translate-x-[28px] bg-[var(--bg)]"
+                      : "translate-x-0 bg-white"
                   }`}
                 >
                   {isDarkMode ? (
                     <DarkModeIcon
-                      className="text-[var(--textColor)]"
+                      className="text-yellow-300"
                       fontSize="small"
                     />
                   ) : (
-                    <Brightness7Icon
-                      className="text-[var(--textColor)]"
-                      fontSize="small"
-                    />
+                    <IoMdSunny className="text-2xl text-yellow-500" />
                   )}
                 </div>
               </div>

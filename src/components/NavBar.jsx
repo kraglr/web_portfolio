@@ -64,7 +64,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="text-gray-300 bg-[var(--bg)] shadow-2xl shadow-[var(--bg)]-900 w-screen">
+    <div className=" bg-[var(--bg)] shadow-2xl shadow-[var(--bg)]-900 w-screen">
       <div className="grid grid-cols-[1fr_3fr_1fr] items-center px-4 py-2">
         {/* Theme Toggle */}
         <div className="col-span-1">
