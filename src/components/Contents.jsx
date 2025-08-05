@@ -5,6 +5,7 @@ import { Modal } from "flowbite-react";
 import { Button } from "flowbite-react";
 import GitHubContributions from "./AboutContent/GitHubContributions";
 import profilePic from "../assets/img/profile.jpg";
+import profileWebp from "../assets/img/profile.webp";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -346,11 +347,15 @@ const Contents = () => {
           />
 
           <div className="bg-[var(--bg)]  rounded-md lg:hidden  p-4 flex md:flex-row flex-col transition-all duration-500 ease-in-out">
-            <img
-              src={profilePic}
-              alt="Profile"
-              className="object-cover object-[center_40%] w-48  border-2 border-[var(--border)]  aspect-square h-48 rounded-full mx-auto my-auto"
-            />
+            <picture>
+              {/* The browser will try to load this WebP image first. */}
+              <source srcSet={profileWebp} type="image/webp" />
+              <img
+                src={profilePic}
+                alt="Profile"
+                className="object-cover object-[center_40%] w-48  border-2 border-[var(--border)]  aspect-square h-48 rounded-full mx-auto my-auto"
+              />
+            </picture>
 
             <div className="px-4 py-2 text-center">
               <h3 className="lg:text-xl text-3xl font-semibold text-[var(--textColor)]">
