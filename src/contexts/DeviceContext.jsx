@@ -3,33 +3,44 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 const DeviceContext = createContext();
 
 export const DeviceContextProvider = ({ children }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    const checkIfMobileOrTablet = () => {
-      // This logic combines touch capability and screen width, which is a robust way
-      // to detect mobile/tablet devices.
-      const isTouch = window.matchMedia("(pointer: coarse)").matches;
-      const isSmallScreen = window.matchMedia("(max-width: 1024px)").matches;
-      setIsMobileOrTablet(isTouch || isSmallScreen);
-      setIsTouch(isTouch);
+    const checkDevice = () => {
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+      const width = window.innerWidth;
+
+      const mobile = width <= 425; // Phones
+      const tablet = width > 425 && width <= 1024; // Tablets
+      const mobileOrTablet = mobile || tablet;
+
+      setIsMobile(mobile);
+      setIsTablet(tablet);
+      setIsMobileOrTablet(mobileOrTablet);
+      setIsTouch(isTouchDevice);
     };
 
-    // Initial check on component mount
-    checkIfMobileOrTablet();
+    checkDevice();
 
-    // Add event listener for window resize and clean up on unmount
-    window.addEventListener("resize", checkIfMobileOrTablet);
-    return () => window.removeEventListener("resize", checkIfMobileOrTablet);
-  }, []); // Empty dependency array ensures this runs only once on mount
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
 
   return (
-    <DeviceContext.Provider value={{ isMobileOrTablet, isTouch }}>
+    <DeviceContext.Provider
+      value={{
+        isMobile,
+        isTablet,
+        isMobileOrTablet,
+        isTouch,
+      }}
+    >
       {children}
     </DeviceContext.Provider>
   );
 };
 
-// Custom hook for easy consumption of the context
 export const useDevice = () => useContext(DeviceContext);

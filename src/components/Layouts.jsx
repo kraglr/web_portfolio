@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState, useContext } from "react";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 import Profile from "./AboutContent/Profile";
 import GitHubContributions from "./AboutContent/GitHubContributions";
-
+import { useDevice } from "../contexts/DeviceContext";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import CallIcon from "@mui/icons-material/Call";
@@ -22,6 +22,7 @@ const Layouts = () => {
   const aboutRef = useRef();
   const portfolioRef = useRef();
   const contactRef = useRef();
+  const { isMobileOrTablet, isMobile } = useDevice();
 
   const mainScrollRef = useRef();
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -147,24 +148,26 @@ const Layouts = () => {
             duration: 0.3,
             ease: "easeInOut",
           }}
-          className={`fixed left-1/2 -translate-x-1/2 z-50 px-4 py-2 mx-auto border-t border-[var(--border)] bg-[var(--bg)] grid ${
+          className={`fixed left-1/2 -translate-x-1/2 z-50 px-2  py-2 mx-auto border-t border-[var(--border)] bg-[var(--bg)] grid ${
             showStickyNav
-              ? "top-0 w-full grid-cols-[1fr_3fr_1fr] shadow-md"
-              : "bottom-0 w-full grid-cols-[3fr_1fr]"
+              ? `top-0 w-full ${
+                  isMobile ? "grid-cols-[4fr_1fr]" : "grid-cols-[1fr_3fr_1fr]"
+                } shadow-md`
+              : "bottom-0 w-full grid-cols-[4fr_1fr]"
           }`}
         >
-          {showStickyNav && <div className="col-span-1" />}
+          {showStickyNav && !isMobile && <div className="col-span-1" />}
 
           {/* Navigation List */}
           <nav
             className={`flex ${
               showStickyNav ? "justify-center" : "justify-start"
-            } col-span-1 px-12`}
+            } col-span-1 px-3`}
           >
             <ul
               className={`flex ${
                 showStickyNav ? "justify-center" : "justify-start"
-              } w-full gap-10`}
+              } w-full ${isMobile ? "gap-3" : "gap-10"}`}
             >
               {navs.map((navItem, idx) => {
                 const Icon = navItem.icon;
@@ -188,7 +191,7 @@ const Layouts = () => {
                       }
                     }}
                   >
-                    {showStickyNav ? (
+                    {showStickyNav || isMobile ? (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -213,39 +216,57 @@ const Layouts = () => {
           </nav>
 
           {/* Theme Toggle */}
-          <div className="flex items-end justify-end col-span-1">
-            <label
-              htmlFor="theme-toggle"
-              className="relative inline-flex items-center h-8 p-1 transition-colors bg-[var(--bgSoft)] rounded-full cursor-pointer w-14"
-              aria-label={`Toggle ${isDarkMode ? "light" : "dark"} mode`}
-            >
-              <input
-                type="checkbox"
-                id="theme-toggle"
-                className="sr-only peer"
-                checked={isDarkMode}
-                onChange={toggleTheme}
-              />
-              <div className="flex items-center justify-between w-full h-full px-1 transition-colors duration-300 rounded-full peer-checked:bg-[var(--bgSoft)]">
-                <div
-                  className={`absolute top-[2px] left-[2px] h-6 w-6 rounded-full  shadow-md transform transition-transform duration-300 flex items-center justify-center ${
-                    isDarkMode
-                      ? "translate-x-[28px] bg-[var(--bg)]"
-                      : "translate-x-0 bg-white"
-                  }`}
-                >
-                  {isDarkMode ? (
-                    <DarkModeIcon
-                      className="text-yellow-300"
-                      fontSize="small"
-                    />
-                  ) : (
-                    <IoMdSunny className="text-2xl text-yellow-500" />
-                  )}
+          {isMobile && (
+            <div className="flex items-center col-span-1 ">
+              {isDarkMode ? (
+                <DarkModeIcon
+                  className="text-yellow-300"
+                  fontSize="small"
+                  onClick={toggleTheme}
+                />
+              ) : (
+                <IoMdSunny
+                  className="text-2xl text-yellow-500"
+                  onClick={toggleTheme}
+                />
+              )}
+            </div>
+          )}
+          {!isMobile && (
+            <div className="flex items-end justify-end col-span-1">
+              <label
+                htmlFor="theme-toggle"
+                className="relative inline-flex items-center h-8 p-1 transition-colors bg-[var(--bgSoft)] rounded-full cursor-pointer w-14"
+                aria-label={`Toggle ${isDarkMode ? "light" : "dark"} mode`}
+              >
+                <input
+                  type="checkbox"
+                  id="theme-toggle"
+                  className="sr-only peer"
+                  checked={isDarkMode}
+                  onChange={toggleTheme}
+                />
+                <div className="flex items-center justify-between w-full h-full px-1 transition-colors duration-300 rounded-full peer-checked:bg-[var(--bgSoft)]">
+                  <div
+                    className={`absolute top-[2px] left-[2px] h-6 w-6 rounded-full  shadow-md transform transition-transform duration-300 flex items-center justify-center ${
+                      isDarkMode
+                        ? "translate-x-[28px] bg-[var(--bg)]"
+                        : "translate-x-0 bg-white"
+                    }`}
+                  >
+                    {isDarkMode ? (
+                      <DarkModeIcon
+                        className="text-yellow-300"
+                        fontSize="small"
+                      />
+                    ) : (
+                      <IoMdSunny className="text-2xl text-yellow-500" />
+                    )}
+                  </div>
                 </div>
-              </div>
-            </label>
-          </div>
+              </label>
+            </div>
+          )}
         </motion.div>
       </AnimatePresence>
 
