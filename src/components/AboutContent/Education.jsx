@@ -14,7 +14,7 @@ const Education = () => {
           <SchoolIcon fontSize="large" className="text-[var(--textColor)]" />
         </div>
         <div className="flex flex-col justify-center">
-          <h1 className="text-2xl font-bold">Educations</h1>
+          <h1 className="text-2xl font-bold">Education</h1>
         </div>
       </div>
 

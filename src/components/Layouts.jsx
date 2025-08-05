@@ -14,12 +14,15 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CareerStats from "./Home/CareerStats";
 import About from "./Contents/About";
 import Contents from "./Contents";
+import Portfolio from "./Portfolio";
+import ContactMe from "./ContactMe";
 
 const Layouts = () => {
-  const location = useLocation();
   const profileRef = useRef();
-  const aboutRef = useRef(); // Add this
-  const navigate = useNavigate();
+  const aboutRef = useRef();
+  const portfolioRef = useRef();
+  const contactRef = useRef();
+
   const mainScrollRef = useRef();
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [showStickyNav, setShowStickyNav] = useState(false);
@@ -27,7 +30,8 @@ const Layouts = () => {
   const navRefs = {
     Home: profileRef,
     About: aboutRef,
-    // Add more when needed (Contact, Portfolio, etc.)
+    Portfolio: portfolioRef,
+    Contact: contactRef,
   };
   useEffect(() => {
     const themeVars = isDarkMode
@@ -67,11 +71,19 @@ const Layouts = () => {
   };
 
   useEffect(() => {
-    if (!profileRef.current || !aboutRef.current) return;
+    if (
+      !profileRef.current ||
+      !aboutRef.current ||
+      !portfolioRef.current ||
+      !contactRef.current
+    )
+      return;
 
     const sectionMap = new Map([
       [profileRef.current, "Home"],
       [aboutRef.current, "About"],
+      [portfolioRef.current, "Portfolio"],
+      [contactRef.current, "Contact"],
     ]);
 
     const observer = new IntersectionObserver(
@@ -109,8 +121,8 @@ const Layouts = () => {
   const navs = [
     { icon: HomeIcon, text: "Home", link: "/home" },
     { icon: PersonIcon, text: "About", link: "/about" },
-    { icon: CallIcon, text: "Contact", link: "/contact" },
     { icon: ArticleIcon, text: "Portfolio", link: "/portfolio" },
+    { icon: CallIcon, text: "Contact", link: "/contact" },
   ];
 
   return (
@@ -241,13 +253,19 @@ const Layouts = () => {
 
       <main
         ref={mainScrollRef}
-        className="flex flex-col flex-1 w-screen min-h-screen space-y-1 overflow-y-auto"
+        className="flex flex-col flex-1 w-screen min-h-screen space-y-3 overflow-y-auto"
       >
         <section ref={profileRef} data-id="Home" className="mb-3">
           <Profile />
         </section>
         <section ref={aboutRef} data-id="about" className="">
           <Contents scrollContainerRef={mainScrollRef} />
+        </section>
+        <section ref={portfolioRef} data-id="portfolio" className="">
+          <Portfolio scrollContainerRef={mainScrollRef} />
+        </section>
+        <section ref={contactRef} data-id="contact" className="">
+          <ContactMe />
         </section>
       </main>
     </div>

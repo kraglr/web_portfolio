@@ -95,7 +95,7 @@ const GitHubContributions = ({ username }) => {
   }, [selectedYear]);
 
   return (
-    <div className="overflow-x-auto p-4 rounded-md mx-auto  bg-[var(--bg)] text-sm ">
+    <div className="overflow-x-auto p-4 rounded-md mx-auto  bg-[var(--bg)] text-sm w-full">
       <div className="flex items-center gap-4 mb-4 text-[var(--textColor)]">
         {/* showStickyNav ? "fixed top-0 left-1/2 -translate-x-1/2 translate-y-0
         opacity-100 w-full grid-cols-[1fr_3fr_1fr]" : "fixed bottom-0 left-1/2
@@ -141,7 +141,7 @@ const GitHubContributions = ({ username }) => {
               (day, idx) => (
                 <span
                   key={day}
-                  className={`xl:h-[9px] lg:h-[10px] h-[9px] mb-[3px] ${
+                  className={`xl:h-[12px] lg:h-[10px] h-[9px] mb-[3px] ${
                     day === "Mon" || day === "Wed" || day === "Fri"
                       ? "visible"
                       : "invisible"
@@ -164,7 +164,7 @@ const GitHubContributions = ({ username }) => {
                 return (
                   <div
                     key={`label-${weekIdx}`}
-                    className="xl:w-[11px] lg:w-[12px] w-[11px] text-[10px] text-[var(--textColor)] text-center"
+                    className="xl:w-[14px] lg:w-[12px] w-[11px] text-[10px] text-[var(--textColor)] text-center"
                   >
                     {monthLabel?.label || ""}
                   </div>
@@ -184,7 +184,7 @@ const GitHubContributions = ({ username }) => {
                       style={{
                         backgroundColor: getColorLevel(day.contributionCount),
                       }}
-                      className="xl:w-[9px] xl:h-[9px] lg:w-[10px] lg:h-[10px] w-[9px] h-[9px] rounded-[2px]"
+                      className="xl:w-[12px] xl:h-[12px] lg:w-[10px] lg:h-[10px] w-[9px] h-[9px] rounded-[2px]"
                     ></div>
                   ))}
                 </div>

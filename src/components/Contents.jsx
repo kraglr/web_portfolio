@@ -15,7 +15,8 @@ import { FaStackOverflow } from "react-icons/fa";
 import vite from "../assets/svg/logo.svg";
 import { FaTelegramPlane } from "react-icons/fa";
 import MessageModal from "./AboutContent/MessageModal";
-import { PiReadCvLogoFill } from "react-icons/pi";
+import ArticleIcon from "@mui/icons-material/Article";
+
 function ViteIcon() {
   return <img src={vite} alt="Vite logo" className="w-10 h-10" />;
 }
@@ -321,10 +322,10 @@ const ProfileCard = ({ setOpenMessageModal, setOpenCVModal }) => {
               <span>Message</span>
             </button>
             <button
-              className="px-3 py-2 text-2xl rounded-full bg-[var(--bg)] cursor-pointer"
+              className="px-3 py-2  rounded-full bg-[var(--bg)] cursor-pointer"
               onClick={() => setOpenCVModal(true)}
             >
-              <PiReadCvLogoFill />
+              <ArticleIcon />
             </button>
           </div>
         </div>
@@ -347,9 +348,10 @@ const Contents = () => {
           />
 
           <div className="bg-[var(--bg)]  rounded-md lg:hidden  p-4 flex md:flex-row flex-col transition-all duration-500 ease-in-out">
-            <picture>
+            <picture className="object-cover object-[center_40%] w-48  border-2 border-[var(--border)]  aspect-square h-48 rounded-full mx-auto my-auto">
               {/* The browser will try to load this WebP image first. */}
-              <source srcSet={profileWebp} type="image/webp" />
+              <source src={profileWebp} type="image/webp" />
+              {/* <source srcSet={profileWebp} type="image/webp" className="" /> */}
               <img
                 src={profilePic}
                 alt="Profile"
@@ -393,9 +395,9 @@ const Contents = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex mt-3 space-x-2">
                 <button
-                  className="bg-[var(--textColor)] text-[var(--bg)] px-6 py-2 rounded-full flex items-center space-x-2 w-full justify-center cursor-pointer mt-3"
+                  className="bg-[var(--textColor)] text-[var(--bg)] px-6 py-2 rounded-full flex items-center space-x-2 w-full justify-center cursor-pointer"
                   role="button"
                   onClick={() => setOpenMessageModal(true)}
                 >
@@ -403,10 +405,10 @@ const Contents = () => {
                   <span>Message</span>
                 </button>
                 <button
-                  className="px-3 py-2 text-2xl rounded-full bg-[var(--bg)] cursor-pointer flex items-center align-middle justify-center"
+                  className="p-2 text-center  text-2xl rounded-full bg-[var(--bgSoft)] cursor-pointer flex items-center align-middle justify-center"
                   onClick={() => setOpenCVModal(true)}
                 >
-                  <PiReadCvLogoFill />
+                  <ArticleIcon className="" />
                 </button>
               </div>
             </div>

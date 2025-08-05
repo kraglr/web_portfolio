@@ -62,7 +62,7 @@ const Experience = () => {
         </div>
 
         <div className="flex flex-col justify-center">
-          <h1 className="text-2xl font-bold">Experience</h1>
+          <h1 className="text-2xl font-bold">Professional Experience</h1>
         </div>
       </div>
       <div className="flex flex-col space-y-3">

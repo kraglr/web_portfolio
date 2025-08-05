@@ -16,12 +16,12 @@ const Profile = () => {
           <LandingPage />
           {/* Profile Picture + Info */}
           <div className="absolute xl:left-20 lg:left-10 z-20 hidden w-[90%] h-40 px-6 space-x-2 lg:flex -bottom-30">
-            <picture>
+            <picture className="object-cover w-40 mx-auto border-4 border-[var(--border)] rounded-full aspect-square">
               <source srcSet={profilePic} type="image/webp" />
               <img
                 src={profilePicPng}
                 alt="profile"
-                className="object-cover w-40 mx-auto border-4 border-white rounded-full aspect-square"
+                className="object-cover w-full mx-auto rounded-full aspect-square"
               />
             </picture>
             <div className="flex flex-row justify-between items-center w-[calc(100%-160px)] h-full ml-4">
