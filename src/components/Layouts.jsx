@@ -119,6 +119,20 @@ const Layouts = () => {
     };
   });
 
+  const scrollToPortfolio = () => {
+    portfolioRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const navs = [
     { icon: HomeIcon, text: "Home", link: "/home" },
     { icon: PersonIcon, text: "About", link: "/about" },
@@ -277,7 +291,10 @@ const Layouts = () => {
         className="flex flex-col flex-1 w-screen min-h-screen space-y-3 overflow-y-auto"
       >
         <section ref={profileRef} data-id="Home" className="mb-3">
-          <Profile />
+          <Profile
+            scrollToPortfolio={scrollToPortfolio}
+            scrollToContact={scrollToContact}
+          />
         </section>
         <section ref={aboutRef} data-id="about" className="">
           <Contents scrollContainerRef={mainScrollRef} />

@@ -5,7 +5,7 @@ import profilePicPng from "../../assets/img/profile.jpg";
 import LandingPage from "../Home/LandingPage";
 import MessageModal from "./MessageModal"; // Import the modal
 
-const Profile = () => {
+const Profile = ({ scrollToPortfolio, scrollToContact }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -34,11 +34,14 @@ const Profile = () => {
                 </h3>
               </div>
               <div className="flex space-x-4">
-                <button className="px-4 py-2 text-[whitesmoke] bg-blue-950  rounded-md cursor-pointer">
+                <button
+                  className="px-4 py-2 text-[whitesmoke] bg-blue-950  rounded-md cursor-pointer"
+                  onClick={scrollToPortfolio}
+                >
                   View My Work
                 </button>
                 <button
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={scrollToContact}
                   className="px-4 py-2 bg-[var(--bgSoft)] text-[var(--textColor)] rounded-md cursor-pointer"
                 >
                   Let's Connect
