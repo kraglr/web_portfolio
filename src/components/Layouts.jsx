@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 
 import Profile from "./AboutContent/Profile";
-import GitHubContributions from "./AboutContent/GitHubContributions";
+
 import { useDevice } from "../contexts/DeviceContext";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
@@ -11,8 +11,6 @@ import CallIcon from "@mui/icons-material/Call";
 import ArticleIcon from "@mui/icons-material/Article";
 import { IoMdSunny } from "react-icons/io";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import CareerStats from "./Home/CareerStats";
-import About from "./Contents/About";
 import Contents from "./Contents";
 import Portfolio from "./Portfolio";
 import ContactMe from "./ContactMe";
@@ -22,7 +20,7 @@ const Layouts = () => {
   const aboutRef = useRef();
   const portfolioRef = useRef();
   const contactRef = useRef();
-  const { isMobileOrTablet, isMobile } = useDevice();
+  const { isMobile } = useDevice();
 
   const mainScrollRef = useRef();
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -35,6 +33,7 @@ const Layouts = () => {
     Contact: contactRef,
   };
   useEffect(() => {
+    // alert(isDarkMode);
     const themeVars = isDarkMode
       ? {
           "--bg": "#222",
@@ -63,7 +62,7 @@ const Layouts = () => {
     for (const [key, value] of Object.entries(themeVars)) {
       root.style.setProperty(key, value);
     }
-    setIsDarkMode(localStorage.getItem("isDarkMode") === "true");
+    // setIsDarkMode(localStorage.getItem("isDarkMode"));
   }, [isDarkMode]);
 
   const toggleTheme = () => {

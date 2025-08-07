@@ -72,7 +72,13 @@ const Experience = () => {
               key={idx}
               className="grid grid-cols-[1fr_7fr] gap-x-5 border-t-1 border-[var(--border)] items-center "
             >
-              <img src={exp.img} alt="" />
+              <img
+                src={exp.img}
+                alt={`${exp.company} logo`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto"
+              />
               <div className="col-span-1">
                 <h1 className="text-[var(--textColor)] font-bold text-xl">
                   {exp.title}

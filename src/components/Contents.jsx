@@ -420,13 +420,21 @@ const Contents = () => {
               <h1>Get in Touch</h1>
             </div>
             <div className="flex items-center justify-around space-x-2 ">
-              <LinkedInIcon fontSize="medium" className="text-[#0077B5]" />
-              <GitHubIcon
-                fontSize="medium"
-                className="text-[var(--textColor)]"
-              />
-              <FacebookIcon fontSize="medium" className="text-[#4267B2]" />
-              <InstagramIcon fontSize="medium" className="text-[#F77737]" />
+              <a href="https://www.linkedin.com/in/aguilar-kier-luna">
+                <LinkedInIcon fontSize="medium" className="text-[#0077B5]" />
+              </a>
+              <a href="https://github.com/kraglr">
+                <GitHubIcon
+                  fontSize="medium"
+                  className="text-[var(--textColor)]"
+                />
+              </a>
+              <a href="https://www.facebook.com/aguilarkier">
+                <FacebookIcon fontSize="medium" className="text-[#4267B2]" />
+              </a>
+              <a href="https://www.instagram.com/kraglr25/">
+                <InstagramIcon fontSize="medium" className="text-[#F77737]" />
+              </a>
             </div>
             <p className="text-start text-xs text-[var(--textColorSoft)] mt-2  italic">
               Have an idea or project? Let's bring it to life together.
