@@ -63,6 +63,7 @@ const Project = () => {
       category: "Projects",
       description:
         "A Tetris game clone developed using React and Vite, styled with Tailwind CSS. Features smooth animations, responsive controls, and retro-inspired visuals for a nostalgic experience.",
+      site: "https://kraglr-tetris.netlify.app/",
     },
     {
       src: jennie,
