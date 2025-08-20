@@ -18,6 +18,7 @@ import krweather from "../../assets/img/projects/krweather_converted.webp";
 
 import LaunchIcon from "@mui/icons-material/Launch";
 import AnimatedSection from "../utilities/AnimatedSection";
+import GitHubRepos from "./GitHubRepos";
 
 const Project = () => {
   const [projType, setProjType] = useState("All");
@@ -152,83 +153,85 @@ const Project = () => {
       : portfolioItems.filter((item) => item.category === projType);
 
   return (
-    <div className="transition-all duration-500 ease-in-out portfolio-container bg-[var(--bg)] rounded-md">
-      <div className="w-full p-5 mx-auto">
-        <div className="my-3 text-center portfolio-header">
-          {/* <h2 className="font-jumbled">Portfolio</h2> */}
+    <div className="transition-all duration-500 ease-in-out portfolio-container ">
+      <div className="grid lg:grid-cols-[4fr_1fr] grid-cols-1 mx-auto gap-2">
+        <div className="flex lg:flex-row flex-col items-start col-span-1 bg-[var(--bg)] rounded-md py-5 px-3 gap-x-4 gap-y-5">
+          <div className="sticky w-full text-left lg:flex-1 flex-3 lg:top-18 portfolio-nav top-5 ">
+            <aside className="items-center justify-between w-full mx-auto align-middle nav">
+              <ul className="flex flex-row justify-center w-full lg:justify-between lg:flex-col">
+                {categories.map((category) => (
+                  <li
+                    key={category}
+                    className={`cursor-pointer px-3 py-1  transition-color duration-300 ${
+                      projType === category
+                        ? " text-[var(--textColor)] border-b-3 border-b-[var(--bgHighlight)]"
+                        : "hover:bg-[var(--bgSofter)] border-b-0"
+                    }`}
+                    onClick={() => setProjType(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
 
-          {/* Category Navigation */}
-          <nav className="justify-between align-middle items-center w-[50%] mx-auto mt-5">
-            <ul className="flex flex-row justify-between">
-              {categories.map((category) => (
-                <li
-                  key={category}
-                  className={`cursor-pointer px-3 py-1 rounded transition-all duration-300 ${
-                    projType === category
-                      ? "bg-[var(--bgSoft)] text-[var(--textColor)]"
-                      : "hover:bg-[var(--bgSofter)]"
-                  }`}
-                  onClick={() => setProjType(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        <div className="portfolio-body">
-          <div className="grid grid-cols-1 images-div lg:grid-cols-4 md:grid-cols-2 gap-y-7 gap-x-4">
-            {filteredItems.map((item, i) => (
-              <AnimatedSection direction="top" key={i}>
-                <div className="col-span-1 img-box">
-                  <div className="relative w-full overflow-hidden shadow-md img-container group aspect-square rounded-xl">
-                    {!loadedImages[i] && (
-                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-100">
-                        <div className="w-6 h-6 border-4 border-gray-600 rounded-full border-t-transparent animate-spin"></div>
-                      </div>
-                    )}
-                    <picture
-                      className={`w-full h-full object-cover transition-opacity duration-500 ${
-                        loadedImages[i] ? "opacity-100" : "opacity-0"
-                      }`}
-                      loading="lazy"
-                      onLoad={() => handleImageLoad(i)}
-                    >
-                      <source srcSet={item.src} type="image/webp" />
-                      <img
-                        src={item.src}
-                        alt={item.label}
+          <div className="portfolio-body flex-3 ">
+            <div className="grid grid-cols-1 images-div lg:grid-cols-3 md:grid-cols-2 gap-y-7 gap-x-4">
+              {filteredItems.map((item, i) => (
+                <AnimatedSection direction="top" key={i}>
+                  <div className="col-span-1 img-box">
+                    <div className="relative w-full overflow-hidden shadow-md img-container group aspect-square rounded-xl">
+                      {!loadedImages[i] && (
+                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-100">
+                          <div className="w-6 h-6 border-4 border-gray-600 rounded-full border-t-transparent animate-spin"></div>
+                        </div>
+                      )}
+                      <picture
                         className={`w-full h-full object-cover transition-opacity duration-500 ${
                           loadedImages[i] ? "opacity-100" : "opacity-0"
                         }`}
-                      />
-                    </picture>
-                    {item.description && (
-                      <div className="description absolute inset-0 bg-[rgba(0,0,0,0.6)] text-white items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in px-8 py-4 text-center text-[.875rem] cursor-pointer flex flex-col">
-                        <span className="text-xs text-justify">
-                          {item.description}
-                        </span>
-                        {item.site && (
-                          <a
-                            href={item.site}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 mt-1 text-xl hover:underline"
-                          >
-                            Visit Site
-                            <LaunchIcon fontSize="small" />
-                          </a>
-                        )}
-                      </div>
-                    )}
+                        loading="lazy"
+                        onLoad={() => handleImageLoad(i)}
+                      >
+                        <source srcSet={item.src} type="image/webp" />
+                        <img
+                          src={item.src}
+                          alt={item.label}
+                          className={`w-full h-full object-cover transition-opacity duration-500 ${
+                            loadedImages[i] ? "opacity-100" : "opacity-0"
+                          }`}
+                        />
+                      </picture>
+                      {item.description && (
+                        <div className="description absolute inset-0 bg-[rgba(0,0,0,0.6)] text-white items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in px-8 py-4 text-center text-[.875rem] cursor-pointer flex flex-col">
+                          <span className="text-xs text-justify">
+                            {item.description}
+                          </span>
+                          {item.site && (
+                            <a
+                              href={item.site}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 mt-1 text-xl hover:underline"
+                            >
+                              Visit Site
+                              <LaunchIcon fontSize="small" />
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <span className="block mt-2 text-center">{item.label}</span>
                   </div>
-                  <span className="block mt-2 text-center">{item.label}</span>
-                </div>
-              </AnimatedSection>
-            ))}
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </div>
+        <aside className="sticky col-span-1 bg-[var(--bg)] lg:top-18 rounded-md repo top-5 h-fit">
+          <GitHubRepos username="kraglr" />
+        </aside>
       </div>
     </div>
   );
