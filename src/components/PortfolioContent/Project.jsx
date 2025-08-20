@@ -80,6 +80,7 @@ const Project = () => {
       category: "Arts",
       description:
         "A traditional portrait of Aiah from BINI, hand-drawn using graphite and charcoal pencils to create realistic texture and depth.",
+      site: "https://ph.pinterest.com/pin/802274121151435776/",
     },
     {
       src: aiah_vector,
@@ -115,6 +116,7 @@ const Project = () => {
       category: "Arts",
       description:
         "A graphite and charcoal pencil portrait of Jhoanna from BINI, showcasing expressive eyes and delicate details.",
+      site: "https://ph.pinterest.com/pin/802274121151435774/",
     },
     {
       src: karina,
@@ -129,6 +131,7 @@ const Project = () => {
       category: "Arts",
       description:
         "Traditional graphite and charcoal drawing of Maloi from BINI, highlighting refined textures and soft gradients.",
+      site: "https://ph.pinterest.com/pin/802274121151647991/",
     },
     {
       src: mina,

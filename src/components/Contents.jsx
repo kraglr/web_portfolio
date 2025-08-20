@@ -12,7 +12,7 @@ import vite from "../assets/svg/logo.svg";
 import { FaTelegramPlane } from "react-icons/fa";
 import MessageModal from "./AboutContent/MessageModal";
 import ArticleIcon from "@mui/icons-material/Article";
-
+import PinterestIcon from "@mui/icons-material/Pinterest";
 function ViteIcon() {
   return <img src={vite} alt="Vite logo" className="w-10 h-10" />;
 }
@@ -432,6 +432,9 @@ const Contents = () => {
               </a>
               <a href="https://www.instagram.com/kraglr25/">
                 <InstagramIcon fontSize="medium" className="text-[#F77737]" />
+              </a>
+              <a href="https://ph.pinterest.com/aguilarkier252677/arts/">
+                <PinterestIcon fontSize="medium" className="text-red-500" />
               </a>
             </div>
             <p className="text-start text-xs text-[var(--textColorSoft)] mt-2  italic">

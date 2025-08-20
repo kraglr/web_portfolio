@@ -9,7 +9,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import { CiPaperplane } from "react-icons/ci";
-
+import PinterestIcon from "@mui/icons-material/Pinterest";
 const initialState = {
   name: "",
   email: "",
@@ -126,6 +126,9 @@ const ContactMe = () => {
                 </a>
                 <a href="https://github.com/kraglr">
                   <GitHubIcon />
+                </a>
+                <a href="https://ph.pinterest.com/aguilarkier252677/arts/">
+                  <PinterestIcon fontSize="medium" />
                 </a>
               </div>
               {/* <div class="credits">
