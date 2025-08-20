@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import profilePic from "../../assets/img/profile.webp";
-import profilePicPng from "../../assets/img/profile.jpg";
 import LandingPage from "../Home/LandingPage";
 import MessageModal from "./MessageModal"; // Import the modal
 
