@@ -1,15 +1,21 @@
 import profile from "../../assets/img/profile.jpg";
+import profileWebp from "../../assets/img/profile.webp";
 const AboutMe = () => {
   return (
     <>
       <div className="flex flex-col bg-[var(--bg)]  mx-auto  px-6 py-6 space-y-8 text-[var(--textColor)] h-full">
         <div className="flex items-center gap-4">
           <div className="rounded-full w-20 h-20 bg-[var(--bgSofter)] flex items-center justify-center shadow-md">
-            <img
-              src={profile}
-              alt=""
-              className="object-cover w-full h-full rounded-full"
-            />
+            <picture>
+              <source srcSet={profileWebp} type="image/webp" />
+              <img
+                src={profile}
+                alt="Kier Aguilar"
+                width="80"
+                height="80"
+                className="object-cover w-full h-full rounded-full"
+              />
+            </picture>
           </div>
           <div className="flex flex-col justify-center">
             <h1 className="text-2xl font-bold">Kier L. Aguilar</h1>

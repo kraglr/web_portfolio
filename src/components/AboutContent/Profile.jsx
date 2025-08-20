@@ -20,7 +20,9 @@ const Profile = ({ scrollToPortfolio, scrollToContact }) => {
               <source srcSet={profilePic} type="image/webp" />
               <img
                 src={profilePicPng}
-                alt="profile"
+                alt="Kier Aguilar profile picture"
+                width="160"
+                height="160"
                 className="object-cover w-full mx-auto rounded-full aspect-square"
               />
             </picture>
