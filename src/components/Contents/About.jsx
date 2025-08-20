@@ -1,8 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import AboutMe from "../AboutContent/AboutMe";
-import CareerStats from "../Home/CareerStats";
-import GitHubContributions from "../AboutContent/GitHubContributions";
+
+const AboutMe = lazy(() => import("../AboutContent/AboutMe"));
+const CareerStats = lazy(() => import("../Home/CareerStats"));
+const GitHubContributions = lazy(() =>
+  import("../AboutContent/GitHubContributions")
+);
 
 const sectionsConfig = [
   { key: "aboutMe", title: "About Me", component: <AboutMe /> },
@@ -13,6 +16,12 @@ const sectionsConfig = [
     component: <GitHubContributions username="kraglr" />,
   },
 ];
+
+const SuspenseFallback = () => (
+  <div className="flex items-center justify-center w-full h-48 text-[var(--textColorSoft)]">
+    Loading component...
+  </div>
+);
 
 const About = ({ scrollContainerRef }) => {
   const [pinnedKey, setPinnedKey] = useState(null);
@@ -150,7 +159,7 @@ const About = ({ scrollContainerRef }) => {
             className="transition-all duration-300 min-h-[50vh]"
             data-section={key}
           >
-            {component}
+            <Suspense fallback={<SuspenseFallback />}>{component}</Suspense>
           </motion.section>
         ))}
       </div>
@@ -174,7 +183,9 @@ const About = ({ scrollContainerRef }) => {
                 {sectionsConfig.find((s) => s.key === pinnedKey)?.title}
               </div>
               <div className="origin-top transform scale-90">
-                {sectionsConfig.find((s) => s.key === pinnedKey)?.component}
+                <Suspense fallback={<SuspenseFallback />}>
+                  {sectionsConfig.find((s) => s.key === pinnedKey)?.component}
+                </Suspense>
               </div>
             </motion.div>
           )}

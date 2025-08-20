@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -11,9 +11,15 @@ import CallIcon from "@mui/icons-material/Call";
 import ArticleIcon from "@mui/icons-material/Article";
 import { IoMdSunny } from "react-icons/io";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import Contents from "./Contents";
-import Portfolio from "./Portfolio";
-import ContactMe from "./ContactMe";
+const Contents = lazy(() => import("./Contents"));
+const Portfolio = lazy(() => import("./Portfolio"));
+const ContactMe = lazy(() => import("./ContactMe"));
+
+const SectionFallback = () => (
+  <div className="flex items-center justify-center w-full min-h-screen text-[var(--textColorSoft)]">
+    Loading section...
+  </div>
+);
 
 const Layouts = () => {
   const profileRef = useRef();
@@ -296,13 +302,19 @@ const Layouts = () => {
           />
         </section>
         <section ref={aboutRef} data-id="about" className="">
-          <Contents scrollContainerRef={mainScrollRef} />
+          <Suspense fallback={<SectionFallback />}>
+            <Contents scrollContainerRef={mainScrollRef} />
+          </Suspense>
         </section>
         <section ref={portfolioRef} data-id="portfolio" className="">
-          <Portfolio scrollContainerRef={mainScrollRef} />
+          <Suspense fallback={<SectionFallback />}>
+            <Portfolio scrollContainerRef={mainScrollRef} />
+          </Suspense>
         </section>
         <section ref={contactRef} data-id="contact" className="">
-          <ContactMe />
+          <Suspense fallback={<SectionFallback />}>
+            <ContactMe />
+          </Suspense>
         </section>
       </main>
     </div>

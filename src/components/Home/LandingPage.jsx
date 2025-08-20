@@ -1,6 +1,6 @@
+import { lazy, Suspense } from "react";
 import bg from "../../assets/img/generatedimg.webp";
 import bgpng from "../../assets/img/generatedimg.png";
-import Typewriter from "typewriter-effect";
 import {
   SiLaravel,
   SiReact,
@@ -16,6 +16,8 @@ import {
   SiExpress,
   SiPhp,
 } from "react-icons/si";
+
+const Typewriter = lazy(() => import("typewriter-effect"));
 
 const TechStackIcons = () => {
   return (
@@ -85,22 +87,27 @@ const LandingPage = () => {
           src={bgpng}
           alt="Background"
           className="absolute top-0 left-0 object-cover w-full h-full opacity-30 blur-sm"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
       </picture>
 
       <h1 className="relative z-10 max-w-5xl px-4 text-3xl leading-snug text-center md:text-5xl">
-        <Typewriter
-          options={{
-            strings: [
-              "Full-Stack Laravel & React Developer",
-              "Building Scalable Web Systems",
-            ],
-            autoStart: true,
-            loop: true,
-            delay: 60,
-            deleteSpeed: 30,
-          }}
-        />
+        <Suspense fallback={<span className="opacity-0">.</span>}>
+          <Typewriter
+            options={{
+              strings: [
+                "Full-Stack Laravel & React Developer",
+                "Building Scalable Web Systems",
+              ],
+              autoStart: true,
+              loop: true,
+              delay: 60,
+              deleteSpeed: 30,
+            }}
+          />
+        </Suspense>
       </h1>
       <TechStackIcons />
     </div>

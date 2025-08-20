@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -51,18 +50,23 @@ const GitHubContributions = ({ username }) => {
     `;
 
     try {
-      const res = await axios.post(
-        "https://api.github.com/graphql",
-        { query },
-        {
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-          },
-        }
-      );
+      const res = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+        },
+        body: JSON.stringify({ query }),
+      });
 
+      if (!res.ok) {
+        const errorBody = await res.text();
+        throw new Error(`GitHub API error: ${res.statusText} - ${errorBody}`);
+      }
+
+      const json = await res.json();
       const weeksData =
-        res.data.data.user.contributionsCollection.contributionCalendar.weeks;
+        json.data.user.contributionsCollection.contributionCalendar.weeks;
 
       // Extract month labels from the first day of weeks
       const monthLabels = [];

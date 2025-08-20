@@ -2,9 +2,25 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite'
 import fs from 'fs';
+import viteCompression from "vite-plugin-compression";
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(),// Gzip compression
+  viteCompression({
+    verbose: true, // Print compression results in the console
+    disable: false,
+    threshold: 10240, // Compress files larger than 10kb
+    algorithm: "gzip",
+    ext: ".gz",
+  }),
+  // Brotli compression
+  viteCompression({
+    verbose: true,
+    disable: false,
+    threshold: 10240, // Compress files larger than 10kb
+    algorithm: "brotliCompress",
+    ext: ".br",
+  }),],
   server: {
 
     https: {
@@ -15,10 +31,9 @@ export default defineConfig({
     port: 5174,
   },
   optimizeDeps: {
-    // Explicitly include react-pdf so Vite processes it from the start.
+
     include: ['react-pdf/dist/esm/entry.js', 'pdfjs-dist'],
-    // You might also need to exclude it if it's causing issues,
-    // but including is usually the solution for a timeout.
+
     // exclude: ['react-pdf'],
   },
 })
