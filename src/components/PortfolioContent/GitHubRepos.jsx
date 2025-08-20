@@ -26,6 +26,7 @@ const GitHubRepos = ({ username }) => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -33,15 +34,22 @@ const GitHubRepos = ({ username }) => {
         setLoading(true);
         // Fetch top 5 most recently updated repos
         const response = await fetch(
-          `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=5`
+          `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=5`,
+          {
+            headers: {
+              Authorization: `Bearer ${GITHUB_TOKEN}`,
+            },
+          }
         );
         if (!response.ok) {
+          const errorData = await response.json();
           throw new Error(
-            `Failed to fetch repositories: ${response.statusText}`
+            `Failed to fetch repositories: ${response.statusText} (${
+              response.status
+            }) - ${errorData.message || "Unknown error"}`
           );
         }
         const data = await response.json();
-        console.log(data);
 
         setRepos(data);
         setError(null);
@@ -56,7 +64,7 @@ const GitHubRepos = ({ username }) => {
     if (username) {
       fetchRepos();
     }
-  }, [username]);
+  }, [username, GITHUB_TOKEN]);
 
   return (
     <div className="p-4">
