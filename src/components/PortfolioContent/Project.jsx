@@ -57,6 +57,7 @@ const Project = () => {
       category: "Projects",
       description:
         "A browser-based chess app built with React and Vite, styled with Tailwind CSS. Provides real-time gameplay with intuitive UI and responsive design for desktop and mobile users.",
+      site: "https://kraglr-chess.netlify.app/",
     },
     {
       src: tetrisapp,
