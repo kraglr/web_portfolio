@@ -351,6 +351,8 @@ const Contents = () => {
               <img
                 src={profilePic}
                 alt="Profile"
+                width="192"
+                height="192"
                 className="object-cover object-[center_40%] w-48  border-2 border-[var(--border)]  aspect-square h-48 rounded-full mx-auto my-auto"
               />
             </picture>

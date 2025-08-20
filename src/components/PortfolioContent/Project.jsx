@@ -198,6 +198,8 @@ const Project = () => {
                         <img
                           src={item.src}
                           alt={item.label}
+                          width="512"
+                          height="512"
                           className={`w-full h-full object-cover transition-opacity duration-500 ${
                             loadedImages[i] ? "opacity-100" : "opacity-0"
                           }`}

@@ -9,7 +9,7 @@ export default defineConfig({
   viteCompression({
     verbose: true, // Print compression results in the console
     disable: false,
-    threshold: 10240, // Compress files larger than 10kb
+    threshold: 5120, // Compress files larger than 10kb
     algorithm: "gzip",
     ext: ".gz",
   }),

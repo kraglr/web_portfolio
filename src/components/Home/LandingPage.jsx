@@ -1,84 +1,33 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import bg from "../../assets/img/generatedimg.webp";
 import bgpng from "../../assets/img/generatedimg.png";
-import {
-  SiLaravel,
-  SiReact,
-  SiHtml5,
-  SiCss3,
-  SiNodedotjs,
-  SiSass,
-  SiBootstrap,
-  SiTailwindcss,
-  SiPostman,
-  SiMysql,
-  SiGithub,
-  SiExpress,
-  SiPhp,
-} from "react-icons/si";
 
 const Typewriter = lazy(() => import("typewriter-effect"));
 
-const TechStackIcons = () => {
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-4 px-4 mt-4 text-xl lg:px-2">
-      <SiLaravel
-        title="Laravel"
-        className="text-2xl cursor-pointer hover:text-red-500"
-      />
-      <SiPhp
-        title="PHP"
-        className="text-2xl cursor-pointer hover:text-blue-300"
-      />
-      <SiReact
-        title="React"
-        className="text-2xl cursor-pointer hover:text-blue-400"
-      />
-      <SiHtml5
-        title="HTML5"
-        className="text-2xl cursor-pointer hover:text-orange-700"
-      />
-      <SiCss3
-        title="CSS3"
-        className="text-2xl cursor-pointer hover:text-blue-600"
-      />
-      <SiMysql
-        title="MySQL"
-        className="text-2xl cursor-pointer hover:text-[#00758F]"
-      />
-      <SiNodedotjs
-        title="Node.js"
-        className="text-2xl cursor-pointer hover:text-green-500"
-      />
-      <SiSass
-        title="SCSS"
-        className="text-2xl cursor-pointer hover:text-pink-500"
-      />
-      <SiBootstrap
-        title="Bootstrap"
-        className="text-2xl cursor-pointer hover:text-purple-600"
-      />
-      <SiTailwindcss
-        title="TailwindCSS"
-        className="text-2xl cursor-pointer hover:text-cyan-500"
-      />
-      <SiPostman
-        title="Postman"
-        className="text-2xl cursor-pointer hover:text-orange-500"
-      />
-      <SiGithub
-        title="GitHub"
-        className="text-2xl cursor-pointer hover:text-black"
-      />
-      <SiExpress
-        title="Express"
-        className="text-2xl cursor-pointer hover:text-black"
-      />
-    </div>
-  );
-};
-
 const LandingPage = () => {
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  useEffect(() => {
+    // Preload background programmatically too
+    const img = new Image();
+    img.src = bg;
+    img.onload = () => setBgLoaded(true);
+    img.onerror = () => {
+      // fallback if webp fails, try png
+      const fallback = new Image();
+      fallback.src = bgpng;
+      fallback.onload = () => setBgLoaded(true);
+    };
+  }, []);
+
+  if (!bgLoaded) {
+    return (
+      <div className="flex items-center justify-center w-screen h-screen text-white bg-black">
+        <span className="animate-pulse">Loading...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="relative flex flex-col justify-center items-center text-[var(--textColor)] bg-[var(--bg)] lg:h-[70vh] h-screen overflow-hidden space-y-8">
       <picture>
@@ -87,9 +36,9 @@ const LandingPage = () => {
           src={bgpng}
           alt="Background"
           className="absolute top-0 left-0 object-cover w-full h-full opacity-30 blur-sm"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
+          loading="eager" // ✅ browser loads immediately
+          fetchpriority="high" // ✅ prioritize above others
+          decoding="async" // ✅ decode off main thread
         />
       </picture>
 
@@ -109,7 +58,6 @@ const LandingPage = () => {
           />
         </Suspense>
       </h1>
-      <TechStackIcons />
     </div>
   );
 };
