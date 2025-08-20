@@ -5,7 +5,7 @@ import profilePicPng from "../../assets/img/profile.jpg";
 import LandingPage from "../Home/LandingPage";
 import MessageModal from "./MessageModal"; // Import the modal
 
-const Profile = ({ scrollToPortfolio, scrollToContact }) => {
+const Profile = ({ scrollToPortfolio, scrollToContact, scrollToNext }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -13,9 +13,13 @@ const Profile = ({ scrollToPortfolio, scrollToContact }) => {
       <div className="bg-[var(--bg)] text-[var(--textColor)] h-full w-full flex flex-col items-center">
         {/* Cover and LandingPage */}
         <div className="relative w-full h-full mx-auto my-auto">
-          <LandingPage />
+          <LandingPage
+            scrollToContact={scrollToContact}
+            scrollToPortfolio={scrollToPortfolio}
+            scrollToNext={scrollToNext}
+          />
           {/* Profile Picture + Info */}
-          <div className="absolute xl:left-20 lg:left-10 z-20 hidden w-[90%] h-40 px-6 space-x-2 lg:flex -bottom-30">
+          {/* <div className="absolute xl:left-20 lg:left-10 z-20 hidden w-[90%] h-40 px-6 space-x-2 lg:flex -bottom-30">
             <picture className="object-cover w-40 mx-auto border-4 border-[var(--border)] rounded-full aspect-square">
               <source srcSet={profilePic} type="image/webp" />
               <img
@@ -50,9 +54,9 @@ const Profile = ({ scrollToPortfolio, scrollToContact }) => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="w-full h-0 lg:h-40" />
+        {/* <div className="w-full h-0 lg:h-40" /> */}
       </div>
       {isModalOpen && <MessageModal onClose={() => setIsModalOpen(false)} />}
     </>

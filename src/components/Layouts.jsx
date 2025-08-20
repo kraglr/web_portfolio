@@ -124,6 +124,13 @@ const Layouts = () => {
     };
   });
 
+  const scrollToNext = () => {
+    aboutRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const scrollToPortfolio = () => {
     portfolioRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -172,7 +179,7 @@ const Layouts = () => {
               ? `top-0 w-full ${
                   isMobile ? "grid-cols-[4fr_1fr]" : "grid-cols-[1fr_3fr_1fr]"
                 } shadow-md`
-              : "bottom-0 w-full grid-cols-[4fr_1fr]"
+              : "bottom-0 w-full grid-cols-[4fr_1fr] hidden"
           }`}
         >
           {showStickyNav && !isMobile && <div className="col-span-1" />}
@@ -299,6 +306,7 @@ const Layouts = () => {
           <Profile
             scrollToPortfolio={scrollToPortfolio}
             scrollToContact={scrollToContact}
+            scrollToNext={scrollToNext}
           />
         </section>
         <section ref={aboutRef} data-id="about" className="">
