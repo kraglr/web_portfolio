@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";

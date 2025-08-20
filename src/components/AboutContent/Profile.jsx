@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import profilePic from "../../assets/img/profile.webp";
 import profilePicPng from "../../assets/img/profile.jpg";

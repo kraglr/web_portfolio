@@ -1,5 +1,3 @@
-// src/components/Home/LandingPage.jsx
-import React from "react";
 import bg from "../../assets/img/generatedimg.webp";
 import bgpng from "../../assets/img/generatedimg.png";
 import Typewriter from "typewriter-effect";

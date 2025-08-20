@@ -1,7 +1,6 @@
-import React from "react";
 import SchoolIcon from "@mui/icons-material/School";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import slsu from "../../assets/svg/slsu.png";
+import slsu_webp from "../../assets/webp/slsu.webp";
 const Education = () => {
   return (
     <div className="p-4 rounded-md mx-auto  bg-[var(--bg)] ">
@@ -19,7 +18,15 @@ const Education = () => {
       </div>
 
       <div className="grid grid-cols-[1fr_7fr] gap-x-3 border-t-1 border-[var(--border)] pt-2">
-        <img src={slsu} alt="" />
+        <picture>
+          <source srcSet={slsu_webp} type="image/webp" />
+          <img
+            src={slsu}
+            alt="Southern Luzon State University logo"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         <div className="col-span-1">
           <h1 className="text-[var(--textColor)] font-bold text-xl">
             Bachelor of Science in Computer Engineering

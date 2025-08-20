@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import AboutMe from "./AboutContent/AboutMe";
-import CareerStats from "./Home/CareerStats";
-import { Modal } from "flowbite-react";
-import { Button } from "flowbite-react";
+import { useState } from "react";
 import GitHubContributions from "./AboutContent/GitHubContributions";
 import profilePic from "../assets/img/profile.jpg";
 import profileWebp from "../assets/img/profile.webp";

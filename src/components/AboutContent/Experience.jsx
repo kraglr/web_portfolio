@@ -1,8 +1,10 @@
-import React from "react";
 import { ImProfile } from "react-icons/im";
 import onedoc from "../../assets/svg/1doc.jpg";
 import tgn from "../../assets/svg/tgn.jpg";
 import rj from "../../assets/svg/rj.png";
+import onedoc_webp from "../../assets/webp/1doc.webp";
+import tgn_webp from "../../assets/webp/tgn.webp";
+import rj_webp from "../../assets/webp/rj.webp";
 const Experience = () => {
   const experience = [
     {
@@ -10,6 +12,7 @@ const Experience = () => {
       company: "One Document Corporation",
       period: "2025 - Present",
       img: onedoc,
+      img_webp: onedoc_webp,
       duties: [
         "Architected modular systems for ERP and EHR platforms using Laravel and React.",
         "Oversaw API integration and database optimization to support growing datasets and users.",
@@ -22,6 +25,7 @@ const Experience = () => {
       company: "One Document Corporation",
       period: "2022 - 2024",
       img: onedoc,
+      img_webp: onedoc_webp,
       duties: [
         "Developed and maintained responsive web apps focused on healthcare workflows.",
         "Optimized SQL queries and implemented REST/SOAP API integrations.",
@@ -34,6 +38,7 @@ const Experience = () => {
       company: "That's Great News",
       period: "2021 - 2022",
       img: tgn,
+      img_webp: tgn_webp,
       duties: [
         "Generated leads from published content and managed publication tracking.",
         "Maintained high accuracy under daily quota pressure across multiple data channels.",
@@ -44,6 +49,7 @@ const Experience = () => {
       company: "RJ Globus Solutions",
       period: "2018",
       img: rj,
+      img_webp: rj_webp,
       duties: [
         "Provided first-level support for desktop, network, and printing issues.",
         "Guided employees on basic troubleshooting and helped resolve service tickets.",
@@ -72,13 +78,16 @@ const Experience = () => {
               key={idx}
               className="grid grid-cols-[1fr_7fr] gap-x-5 border-t-1 border-[var(--border)] items-center "
             >
-              <img
-                src={exp.img}
-                alt={`${exp.company} logo`}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto"
-              />
+              <picture>
+                <source srcSet={exp.img_webp} type="image/webp" />
+                <img
+                  src={exp.img}
+                  alt={`${exp.company} logo`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto"
+                />
+              </picture>
               <div className="col-span-1">
                 <h1 className="text-[var(--textColor)] font-bold text-xl">
                   {exp.title}

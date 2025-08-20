@@ -1,5 +1,3 @@
-import React from "react";
-import GitHubContributions from "./AboutContent/GitHubContributions";
 import Project from "./PortfolioContent/Project";
 
 const Portfolio = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 // import "./skills.scss"; // Your custom SCSS
 import "slick-carousel/slick/slick.css"; // Slick carousel CSS

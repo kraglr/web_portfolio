@@ -1,5 +1,3 @@
-import React from "react";
-import PersonIcon from "@mui/icons-material/Person";
 import profile from "../../assets/img/profile.jpg";
 const AboutMe = () => {
   return (

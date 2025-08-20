@@ -1,4 +1,3 @@
-import React from "react";
 import LandingPage from "../Home/LandingPage";
 import CareerStats from "../Home/CareerStats";
 

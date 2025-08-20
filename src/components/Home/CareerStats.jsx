@@ -1,4 +1,3 @@
-import React from "react";
 import DataExplorationIcon from "@mui/icons-material/DataExploration";
 import HistoryIcon from "@mui/icons-material/History";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";

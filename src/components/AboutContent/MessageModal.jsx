@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdOutlineClear } from "react-icons/md";
 import { CiPaperplane } from "react-icons/ci";

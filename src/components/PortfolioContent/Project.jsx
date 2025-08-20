@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import jennie from "../../assets/img/arts/jennie_converted.webp";
 import aiah from "../../assets/img/arts/aiah_converted.webp";
 import aiah_vector from "../../assets/img/arts/aiah_vector_converted.webp";
